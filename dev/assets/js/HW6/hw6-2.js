@@ -8,10 +8,7 @@ function getDifferentTypes(data) {
             continue;
         }
         numberElements.push(Number(elements[i]));
-    }
-    
-    for (let i = 0; i < numberElements.length; i++){
-        sum += numberElements[i];
+        sum += Number(elements[i]);
     }
 
     const result = sum / numberElements.length;
@@ -20,3 +17,10 @@ function getDifferentTypes(data) {
 
 const resultFunction = getDifferentTypes(prompt());
 console.log(resultFunction);
+
+
+
+
+//for (let i = 0; i < numberElements.length; i++){}
+        
+    

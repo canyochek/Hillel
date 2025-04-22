@@ -2,7 +2,7 @@ function removeElement(array, item) {
     const numbers = array.split(' ');
     const result = [];
     for (let i = 0; i < numbers.length; i++) {
-        if (numbers[i] == item) {
+        if (numbers[i] === item) {
             continue
         }
         result.push(numbers[i]);
