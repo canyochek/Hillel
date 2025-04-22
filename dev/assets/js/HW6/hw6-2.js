@@ -17,10 +17,4 @@ function getDifferentTypes(data) {
 
 const resultFunction = getDifferentTypes(prompt());
 console.log(resultFunction);
-
-
-
-
-//for (let i = 0; i < numberElements.length; i++){}
-        
     
