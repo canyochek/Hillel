@@ -1,7 +1,14 @@
 const users = {
     name: "Oleksandr",
     age: 19,
-    city: "Kyiv"
-}
+    city: "Kyiv",
+    showUserInfo() {
+        Object.entries(this).forEach(([key, value]) => {
+            if (typeof value !== "function") {
+                console.log(`${key}: ${value}`);
+            }
+        });
+    }
+};
 
-console.log(`Масив ключів: ${Object.keys(users)}; Масив значень: ${Object.values(users)}; Масив пар ключів та значень: ${Object.entries(users)}`); 
+users.showUserInfo(); 
