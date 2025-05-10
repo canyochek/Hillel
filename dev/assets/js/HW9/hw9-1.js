@@ -6,22 +6,15 @@ development: {
 },
 };
 
-const totalsalarySales = company.sales.reduce((sum, employee) => {
-    return sum + employee.salary;
-}, 0);
-
-console.log(totalsalarySales)
-
-const totalsalaryDevelopmentWeb = company.development.web.reduce((sum, web) => {
-    return sum + web.salary;
-}, 0);
-
-console.log(totalsalaryDevelopmentWeb)
-
-const totalsalaryDevelopmentInternals = company.development.internals.reduce((sum, internals) => {
-    return sum + internals.salary;
-}, 0);
-
-console.log(totalsalaryDevelopmentInternals)
-
-console.log(`Вся сума = ${totalsalarySales + totalsalaryDevelopmentWeb + totalsalaryDevelopmentInternals}`)
+function sumSalaries(department) {
+  if (Array.isArray(department)) {
+    return department.reduce((sum, employee) => sum + employee.salary, 0);
+  } else {
+    let sum = 0;
+    for (let subdep of Object.values(department)) {
+      sum += sumSalaries(subdep);
+    }
+    return sum;
+  }
+}
+console.log(sumSalaries(company)); 
