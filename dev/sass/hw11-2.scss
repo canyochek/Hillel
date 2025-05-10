@@ -1,0 +1,32 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  margin-right: 20px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+
+
+.btn {
+  padding: 15px;
+  color: #fff;
+}
+.btn-blue {
+  background-color: #4682B4;
+}
+.btn-red {
+  background-color: #FF0000;
+}
+.text-blue {
+  color: #4682B4;
+}
+
+.text-red {
+  color: #FF0000;
+}
