@@ -1,22 +1,22 @@
-const taskInput = document.getElementById("taskInput");
-const addTaskBtn = document.getElementById("addTaskBtn");
-const taskList = document.getElementById("taskList");
+const exerciseList = document.querySelector("ul")
+const btnAdd = document.querySelector(".addExercise")
+const inputField = document.querySelector(".exercises")
 
+btnAdd.addEventListener ('click', function() {
 
-addTaskBtn.addEventListener("click", function () {
-  const taskText = taskInput.value.trim();
-  if (taskText !== "") {
-    const li = document.createElement("li");
-    li.innerHTML = `${taskText} <button class="deleteBtn">Видалити</button>`;
-    taskList.appendChild(li);
-    taskInput.value = "";
+  const deleteList = document.createElement('button')
+  deleteList.textContent = 'Видалити'
+  const checkField = inputField.value.trim();
+
+  if (checkField !== ''){
+    const newElement = document.createElement('li')
+    
+    newElement.textContent = checkField
+    newElement.append(deleteList)
+    exerciseList.append(newElement)
+
+    deleteList.addEventListener ('click', function() {
+      newElement.remove();
+    })
   }
-});
-
-
-taskList.addEventListener("click", function (event) {
-  if (event.target.classList.contains("deleteBtn")) {
-    const li = event.target.parentElement;
-    li.remove();
-  }
-});
+})
