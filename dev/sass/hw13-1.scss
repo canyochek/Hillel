@@ -1,49 +1,23 @@
-body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
+.container {
+  display: flex;
+  flex-direction: column;
 }
 
-h2 {
-  color: #e60050;
+.inputInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-form {
-  max-width: 400px;
-  background: #f8f9fa;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-input, textarea {
-  display: block;
+[name="infoUserName"],
+[name="infoUserMessage"],
+[name="infoUserNumber"],
+[name="infoUserEmail"],
+[name="infoUserButton"] {
+  max-width: 300px;
   width: 100%;
-  padding: 10px;
-  margin-bottom: 5px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
 }
 
-textarea {
-  resize: vertical;
-}
-
-button {
-  padding: 10px;
-  background-color: #00aaff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #007acc;
-}
-
-.error {
-  color: red;
-  font-size: 0.9em;
-  margin-bottom: 10px;
+.errorResult::placeholder {
+  color: #cf0000;
 }

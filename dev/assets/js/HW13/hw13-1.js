@@ -1,64 +1,55 @@
- const form = document.getElementById("form");
-  const nameInput = document.getElementById("name");
-  const emailInput = document.getElementById("email");
-  const phoneInput = document.getElementById("phone");
-  const messageInput = document.getElementById("message");
-  const nameError = document.getElementById("name-error");
-  const emailError = document.getElementById("email-error");
-  const phoneError = document.getElementById("phone-error");
-  const messageError = document.getElementById("message-error");
+const form = document.querySelector(".inputInfo");
+const giveInfo = form.elements["infoUserButton"];
+const giveUserName = form.elements["infoUserName"];
+const giveMessage = form.elements["infoUserMessage"];
+const givePhone = form.elements["infoUserNumber"];
+const giveEmail = form.elements["infoUserEmail"];
+giveInfo.addEventListener('click', function() {
+  const userName = giveUserName.value.trim();
+  const checkUserName = /^[a-zA-Zа-яА-Я]+$/;
+  if (checkUserName.test(userName)) {
+    console.log(`Name - ${userName}`)
+    giveUserName.placeholder = "Name"
+    giveUserName.classList.remove("errorResult")
+  } else {
+    giveUserName.placeholder = "Введіть своє ім'я"
+    giveUserName.value = "";
+    giveUserName.classList.add("errorResult")
+  }
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
+  const userMessage = giveMessage.value.trim();
+  const checkMessage = /^.{5,}$/
+  if (checkMessage.test(userMessage)) {
+    console.log(`Message: ${userMessage}`)
+    giveMessage.placeholder = "Message"
+    giveMessage.classList.remove("errorResult")
+  } else {
+    giveMessage.placeholder = "Введіть мінімум 5 символів"
+    giveMessage.value = "";
+    giveMessage.classList.add("errorResult")
+  }
 
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const phone = phoneInput.value.trim();
-    const message = messageInput.value.trim();
+  const userPhone = givePhone.value.trim();
+  const checkPhone = /^\+38\d{10}$/
+  if (checkPhone.test(userPhone)) {
+    console.log(`Phone: ${userPhone}`)
+    givePhone.placeholder = "Phone"
+    givePhone.classList.remove("errorResult")
+  } else {
+    givePhone.placeholder = "Номер починається з +38 без пробілів"
+    givePhone.value = "";
+    givePhone.classList.add("errorResult")
+  }
 
-    let hasError = false;
-
-    if (name === "") {
-      nameError.textContent = "Введіть ім’я";
-      hasError = true;
-    } else {
-      nameError.textContent = "";
-    }
-
-    if (email === "") {
-      emailError.textContent = "Введіть email";
-      hasError = true;
-    } else if (!email.includes("@") || !email.includes(".")) {
-      emailError.textContent = "Email повинен містити @ та крапку";
-      hasError = true;
-    } else {
-      emailError.textContent = "";
-    }
-
-    if (phone === "") {
-      phoneError.textContent = "Введіть номер телефону";
-      hasError = true;
-    } else if (!phone.startsWith("+380")) {
-      phoneError.textContent = "Номер телефону має починатися з +380";
-      hasError = true;
-    } else {
-      phoneError.textContent = "";
-    }
-
-    if (message.length < 5) {
-      messageError.textContent = "Повідомлення має містити не менше 5 символів";
-      hasError = true;
-    } else {
-      messageError.textContent = "";
-    }
-
-    if (!hasError) {
-      console.log("Ім’я:", name);
-      console.log("Email:", email);
-      console.log("Телефон:", phone);
-      console.log("Повідомлення:", message);
-
-      alert("Форма успішно відправлена!");
-      form.reset();
-    }
-  });
+  const userEmail = giveEmail.value.trim();
+  const checkEmail = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/
+  if (checkEmail.test(userEmail)) {
+    console.log(`Email: ${userEmail}`)
+    giveEmail.placeholder = "Email"
+    giveEmail.classList.remove("errorResult")
+  } else {
+    giveEmail.placeholder = "Введіть правильну електронну пошту"
+    giveEmail.value = "";
+    giveEmail.classList.add("errorResult")
+  }
+})
