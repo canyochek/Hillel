@@ -1,50 +1,57 @@
-function student(name, surname, birthday, grades = [], presents = []) {
+function Student(name, surname, birthday, grades = [], presents = []) {
   this.name = name;
   this.surname = surname;
   this.birthday = birthday;
   this.grades = grades;
-  this.presents = presents.length > 0 ? presents : new Array(25);
+  this.presents = [];
 
   this.getAge = function() {
-    const currentYear = new Date().getFullYear();
-    console.log(currentYear - this.birthday);
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    console.log(currentYear - Number(this.birthday))
+  }
+
+  this.addAbsent = function() {
+    if (presents.length < 25) {
+      presents.forEach((presents) => {
+      if (presents === true) {
+        this.presents.push(presents)
+      }})
+    } else {
+      console.log("Масив відвідуваності заповнений!");
+    }
+  };
+
+  this.addPresent = function() {
+    if (presents.length < 25) {
+      presents.forEach((presents) => {
+      if (presents === false) {
+        this.presents.push(presents)
+      }})
+    }
   };
 
   this.getSummary = function() {
-    let sumGrades = 0;
-    for (let i = 0; i < this.grades.length; i++) {
-      sumGrades += this.grades[i];
-    }
+
+    const sumGrades = this.grades.reduce((accum, grade) => accum + grade, 0);
     const avgGrade = sumGrades / this.grades.length;
 
-    let sumPresent = 0;
-    let attendedLessons = 0;
-    for (let i = 0; i < this.presents.length; i++) {
-      if (this.presents[i] === true) {
-        sumPresent++;
-        attendedLessons++;
-      } else if (this.presents[i] === false) {
-        attendedLessons++;
-      }
-    }
+    const sumPresent = this.presents.reduce((accum, present) => accum + (present === true ? 1 : 0), 0)
+    const avgPresent = sumPresent / this.presents.length
 
-    const avgPresent = attendedLessons > 0 ? sumPresent / attendedLessons : 0;
-
-    if (avgGrade >= 90 && avgPresent >= 0.9) {
-      console.log("Молодець!");
-    } else if ((avgGrade >= 90 && avgPresent < 0.9) || (avgGrade < 90 && avgPresent >= 0.9)) {
-      console.log("Добре, але можна краще");
-    } else {
-      console.log("Редиска");
+    if(avgGrade >= 90 && avgPresent >= 0.9) {
+      console.log("Молодець!")
+    } else if(avgGrade >= 90 && avgPresent < 0.9 || avgGrade < 90 && avgPresent >= 0.9) {
+      console.log("Добре, але можна краще")
+    } else if(avgGrade < 90 && avgPresent < 0.9) {
+      console.log("Редиска")
     }
-  };
+  }
+  
 }
 
-
-const student1 = new student("Sanya", "Shishkovich", 2006, [100, 100, 100], [true, true, false, true]);
-student1.getSummary();
+const student1 = new Student("Sanya", "Shishkovich", 2006, [100, 100, 100], [true, true, true])
 student1.getAge()
-
-const student2 = new student("Maria", "Tarasinka", 2002, [10, 10, 10], [false, false, false, true]);
-student2.getSummary();
-student2.getAge()
+student1.addAbsent()
+student1.addPresent()
+student1.getSummary()
