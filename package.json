@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "bootstrap": "^5.3.7",
     "browser-sync": "^2.27.11",
     "css-mqpacker": "^7.0.0",
     "del": "^3.0.0",
@@ -22,6 +23,7 @@
     "gulp-svgstore": "^9.0.0",
     "gulp-uglify": "^3.0.2",
     "gulp.spritesmith": "^6.13.0",
+    "jquery": "^3.7.1",
     "merge-stream": "^2.0.0",
     "sass": "^1.57.1",
     "vinyl-buffer": "^1.0.1"
