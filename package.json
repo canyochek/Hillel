@@ -27,5 +27,13 @@
     "merge-stream": "^2.0.0",
     "sass": "^1.57.1",
     "vinyl-buffer": "^1.0.1"
+  },
+  "scripts": {
+    "build": "babel dev/assets/js/HW21/hw21-1.js --out-file dev/assets/js/HW21/hw21-1.old.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.28.3",
+    "@babel/core": "^7.28.3",
+    "@babel/preset-env": "^7.28.3"
   }
 }
