@@ -1,24 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import Registration from "./Registration";
+import React from "react";
+import Header from "./components/Header";
+import CardList from "./components/CardList";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-dark text-light min-vh-100 d-flex flex-column">
+      <Header />
+      <main className="flex-grow-1 container py-4">
+        <CardList />
+      </main>
+      <Footer />
     </div>
   );
 }
